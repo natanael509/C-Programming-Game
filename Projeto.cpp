@@ -64,13 +64,13 @@ void moverJogador(Jogador *j, int tecla){
 	//direito
 	case 'a': case 'A':
     case SETA_ESQUERDA:
-    j->pos.y--;
+    j->pos.x--;
 	break;
 	
 	//esquerda
 	case 'd': case 'D':
     case SETA_DIREITA:
-    j->pos.y++;
+    j->pos.x++;
 	break;
 	
 	default:
