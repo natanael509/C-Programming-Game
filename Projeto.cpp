@@ -110,7 +110,7 @@ void moverJogador(Jogador *j, int tecla){
 		int dano = 35;
 		j->vida -= dano;
 		printf("/nVoce enfrentou um inimigo! Perdeu %d de vida!\n", dano);
-		mapa[novoY][novoX] = '.';
+		mapa[direcaoY][direcaoX] = '.';
 	}
 	
 	if(j->vida>0){
@@ -121,6 +121,12 @@ void moverJogador(Jogador *j, int tecla){
 	printf("Jogador se moveu para (%d, %d)\n", j->pos.x, j->pos.y);
 }
 
+void desenharMapa(Jogador *j){
+	system("cls");
+	
+	printf("SEUS STATUS\n");
+	printf("Jogador: %s | Vida: %d/%\n\n", j->nome, j->vida, j->vidaMax);
+}
 
 int main(){
 	Jogador player;
