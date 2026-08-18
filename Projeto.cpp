@@ -125,9 +125,16 @@ void desenharMapa(Jogador *j){
 	system("cls");
 	
 	printf("SEUS STATUS\n");
-	printf("Jogador: %s | Vida: %d/%\n\n", j->nome, j->vida, j->vidaMax);
+	printf("Jogador: %s | Vida: %d/%d | Chaves: %d\n", j->nome, j->vida, j->vidaMax, j->chaves);
+	printf("Coordenada atual: [Linha Y %d | Coluna X %d]\n\n", j->pos.y, j->pos.x);
+	printf("    ");
+	for (int x = 0; x < LARGURA; x++){
+		printf("%d ", x);
+		}
+		printf("\n");
 }
 
+//Função principal
 int main(){
 	Jogador player;
 	
