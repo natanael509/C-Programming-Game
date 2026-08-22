@@ -65,7 +65,7 @@ void moverJogador(Jogador *j, int tecla){
 	}
 	
 	int direcaoX = j->pos.x;
-	int direcaoY j->pos.y;
+	int direcaoY = j->pos.y;
 	
 	switch(tecla){
 	//cima
@@ -98,13 +98,13 @@ void moverJogador(Jogador *j, int tecla){
 	
 	//fazer a checagem de colisão(alterando apenas a copia da função)
 	if (mapa[direcaoY][direcaoX] == 'X'){
-		printf("/nVocê colidiu com a parede!/n")
+		printf("\nVoce colidiu com a parede!\n");
 		return; //quando retorna aqui faz o cancelamento do movimento
 	}
 	if (mapa[direcaoY][direcaoX]=='^'){
 		int dano = 20;
 		j->vida -= dano;
-		printf("\nVocê caiu na armadilha e levou %d de dano/n", dano);
+		printf("\nVoce caiu na armadilha e levou %d de dano/n", dano);
 	}
 	if (mapa[direcaoY][direcaoX]== 'E'){
 		int dano = 35;
@@ -117,7 +117,6 @@ void moverJogador(Jogador *j, int tecla){
 		j->pos.x = direcaoX;
 		j->pos.y = direcaoY;
 		}	
-	}
 	printf("Jogador se moveu para (%d, %d)\n", j->pos.x, j->pos.y);
 }
 
@@ -131,7 +130,24 @@ void desenharMapa(Jogador *j){
 	for (int x = 0; x < LARGURA; x++){
 		printf("%d ", x);
 		}
-		printf("\n");
+		printf("\n    ");
+		for (int x = 0; x < LARGURA; x++){
+			printf("- ");
+		}
+	printf("\n");
+
+    // Matriz do Mapa com Eixo Y (Linhas)
+    for (int y = 0; y < ALTURA; y++) {
+        printf("%2d | ", y); // Formatação para alinhar 1 ou 2 dígitos
+        for (int x = 0; x < LARGURA; x++) {
+            if (x == j->pos.x && y == j->pos.y) {
+                printf("# "); // Desenha o jogador
+            } else {
+                printf("%c ", mapa[y][x]); // Desenha o elemento da matriz
+            }
+        }
+        printf("\n");
+    }
 }
 
 //Função principal
